@@ -1,11 +1,50 @@
 import React, { Component } from 'react'
 import './Login.less'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { message, Form, Input, Button, Checkbox } from 'antd';
+import { Redirect } from 'react-router';
+
+const test = {
+  userName: "ltl",
+  password: "123456"
+}
 
 //login page
 export default class Login extends Component {
+  state = {
+    loginState : false,
+    userName : "",
+    password : "",
+
+  }
+
+  handleChange = (event) => {
+    const name = event.target.name
+
+    this.setState({
+      [name] : event.target.value
+    })
+  }
+
+  //login vertification
+  handleLogin = () => {
+    const { userName, password } = this.state;
+
+    
+    if(userName === test.userName && password === test.password) {
+      this.setState({loginState : true});
+    } else {
+      if(userName !== "" && password !== "")
+        message.info('Incorrect username or password');
+    }
+    console.log("test");
+  }
 
   render() { 
+    if(this.state.loginState) {
+      return <Redirect to="/"/>
+    }
+
+
     return (
       <div className="login">
         <header className="login-header">
@@ -16,6 +55,7 @@ export default class Login extends Component {
           <Form
             className="login-form"
             name="basic"
+            onSubmitCapture={this.handleLogin}
             initialValues={{
               remember: true,
             }}
@@ -31,7 +71,11 @@ export default class Login extends Component {
                 },
               ]}
             >
-              <Input />
+              <Input
+                name="userName"
+                onChange={ this.handleChange}
+                value={this.state.userName}
+              />
             </Form.Item>
 
             <Form.Item
@@ -44,7 +88,11 @@ export default class Login extends Component {
                 },
               ]}
             >
-              <Input.Password />
+              <Input.Password 
+                name="password"
+                onChange={ this.handleChange}
+                value={this.state.password}
+              />
             </Form.Item>
 
             <Form.Item  name="remember" valuePropName="checked">
@@ -52,8 +100,12 @@ export default class Login extends Component {
             </Form.Item>
 
             <Form.Item >
-              <Button type="primary" htmlType="submit">
-                Submit
+              <Button
+                className="login-submit-button"
+                type="primary"
+                htmlType="submit"
+              >
+                Login
               </Button>
             </Form.Item>
           </Form>
