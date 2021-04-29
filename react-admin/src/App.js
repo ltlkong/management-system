@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
-             <Route path="/login" component={Login}></Route>
+              <Route path="/login" component={Login}></Route>
               <Route path="/" component={Admin}></Route>
           </Switch>
         </BrowserRouter>

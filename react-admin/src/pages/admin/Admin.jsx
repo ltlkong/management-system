@@ -20,7 +20,7 @@ export default class Admin extends Component {
             <LeftNav/>
           </Sider>
           <Layout>
-            <Header><HeaderC/></Header>
+            <Header style={{color:"grey",backgroundColor:"#e3e3e3"}}><HeaderC/></Header>
             <Content>Content</Content>
             <Footer style={{textAlign:"center",color:"grey",backgroundColor:"#e3e3e3"}}>Created By LTL</Footer>
           </Layout>
