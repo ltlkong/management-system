@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table } from 'antd';
-import './CategoryAndProduct.less'
+import '../../shareStyle/tableStyle.less'
 import testData from '../../test/testData';
 import { columns } from './categoryTableConfig'
 

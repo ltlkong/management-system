@@ -1,5 +1,3 @@
-
-
 export default {
   userName: "Admin",
   password: "123456",

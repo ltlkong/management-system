@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'antd';
-import './CategoryAndProduct.less'
-import { columns } from './productTableConfig'
+import { columns } from './productTableConfig';
+import '../../shareStyle/tableStyle.less';
 
 const testData = [
     {

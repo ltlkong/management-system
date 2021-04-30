@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import './HeaderC.less'
 import getPageHeaderContent from './GetPageHeaderContent'
 import getLatAndLong from '../../api/GetLatAndLong'
@@ -29,7 +29,7 @@ class HeaderC extends Component {
       })
     })
 
-    setInterval(() => {
+  setInterval(() => {
       this.setState({time: formateTime(Date.now())})
     })
   }
@@ -42,7 +42,7 @@ class HeaderC extends Component {
     return (
       <div className="header">
         <div className="header-left">
-          <a>Log off</a>
+          <Link to="/login">Log off</Link>
           <span style={{display: shouldHideInfo ? "none":"inline-block"}}>    Welcome Admin</span>
         </div>
         <div className="header-middle">
