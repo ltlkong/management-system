@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import './HeaderC.less'
 import getPageHeaderContent from './GetPageHeaderContent'
 import getLatAndLong from '../../api/GetLatAndLong'
@@ -36,8 +36,6 @@ class HeaderC extends Component {
     const path = this.props.location.pathname;
     const content = getPageHeaderContent(path);
     const {conditionText, conditionIcon, temperature, time} = this.state;
-
-    console.log(conditionIcon);
 
     return (
       <div className="header">

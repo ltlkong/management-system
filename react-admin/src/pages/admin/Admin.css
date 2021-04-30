@@ -1,0 +1,5 @@
+.ant-layout-sider .ant-layout-sider-trigger {
+  background-color: lightgray;
+  position: relative;
+  border-top: solid 2px rgb(177, 177, 177);
+}

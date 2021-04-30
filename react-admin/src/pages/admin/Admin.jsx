@@ -12,17 +12,18 @@ import Role from '../role/Role';
 import BarChart from '../charts/BarChart';
 import PieChart from '../charts/BarChart';
 import LineChart from '../charts/BarChart';
-
-
-
-
-
+import './Admin.css'
 const { Header, Footer, Sider, Content } = Layout;
 
 //admin page
 export default class Admin extends Component {
- handleClick = e => {
-    console.log('click ', e);
+
+  state = {
+    collapsed: false,
+  };
+
+  onCollapse = collapsed => {
+    this.setState({ collapsed });
   };
 
 
@@ -35,7 +36,10 @@ export default class Admin extends Component {
     return (
        <>
         <Layout style={{height:"100%"}}>
-          <Sider>
+          <Sider
+            collapsible collapsed={this.state.collapsed}
+            onCollapse={this.onCollapse}
+          >
             <LeftNav/>
           </Sider>
           <Layout>
@@ -53,7 +57,9 @@ export default class Admin extends Component {
                 <Redirect to="/home"/>
               </Switch>
             </Content>
-            <Footer style={{textAlign:"center",color:"grey",backgroundColor:"#e3e3e3"}}>Created By LTL</Footer>
+            <Footer style={{textAlign:"center",color:"grey",backgroundColor:"#e3e3e3",height:"46px",padding:"0px",lineHeight:"46px"}}>
+              Created By LTL
+            </Footer>
           </Layout>
         </Layout>
       </>

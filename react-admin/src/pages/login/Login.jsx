@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Login.less'
-import { message, Form, Input, Button, Checkbox } from 'antd';
+import { message, Form, Input, Button } from 'antd';
 import { Redirect } from 'react-router';
 
 const test = {
@@ -93,7 +93,7 @@ export default class Login extends Component {
                 value={this.state.password}
               />
             </Form.Item>
-            
+
             <Form.Item >
               <Button
                 className="login-submit-button"
