@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import './Login.less'
 import { message, Form, Input, Button } from 'antd';
 import { Redirect } from 'react-router';
-
-const test = {
-  userName: "ltl",
-  password: "123456"
-}
+import test from '../../test/testData'
 
 //login page
 export default class Login extends Component {
@@ -14,7 +10,6 @@ export default class Login extends Component {
     loginState : false,
     userName : "",
     password : "",
-
   }
 
   handleChange = (event) => {
@@ -28,15 +23,12 @@ export default class Login extends Component {
   //login vertification
   handleLogin = () => {
     const { userName, password } = this.state;
-
     
     if(userName === test.userName && password === test.password) {
       this.setState({loginState : true});
-    } else {
-      if(userName !== "" && password !== "")
-        message.info('Incorrect username or password');
+    } else if(userName !== "" && password !== "") {
+      message.info('Incorrect username or password');
     }
-    console.log("test");
   }
 
   render() { 

@@ -17,21 +17,20 @@ const { Header, Footer, Sider, Content } = Layout;
 
 //admin page
 export default class Admin extends Component {
-
   state = {
-    collapsed: false,
+    collapsed: window.innerWidth < 500 ? true : false,
   };
 
   onCollapse = collapsed => {
     this.setState({ collapsed });
   };
 
-
   render() {
     //login status is false
-    if(false){
-      return <Redirect to="/login"/>
-    }
+    // if(true){
+    //   console.log(1);
+    //   return <Redirect to="/login"/>
+    // }
 
     return (
        <>
@@ -43,7 +42,7 @@ export default class Admin extends Component {
             <LeftNav/>
           </Sider>
           <Layout>
-            <Header style={{color:"grey",backgroundColor:"#e3e3e3"}}><HeaderC/></Header>
+            <HeaderC/>
             <Content>
               <Switch>
                 <Route path="/home" component={Home}/>

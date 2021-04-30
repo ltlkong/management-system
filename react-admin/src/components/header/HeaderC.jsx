@@ -10,8 +10,9 @@ class HeaderC extends Component {
   state = {
     conditionText: "Partly cloudy",
     conditionIcon: "//cdn.weatherapi.com/weather/64x64/day/116.png",
-    temperature: "9",
-    time: formateTime(Date.now())
+    temperature: "9°C",
+    time: formateTime(Date.now()),
+    isPhone: window.innerWidth < 500 ? true : false,
   }
 
   componentDidMount() {
@@ -19,11 +20,12 @@ class HeaderC extends Component {
     .then(coord => {
       getWeatherInformation(coord, 1)
       .then(res => {
-        this.setState({
-          conditionText: res.current.condition.text,
-          conditionIcon: res.current.condition.icon,
-          temperature: res.current.temp_c + "°C"
-        })
+        if(res)
+          this.setState({
+            conditionText: res.current.condition.text,
+            conditionIcon: res.current.condition.icon,
+            temperature: res.current.temp_c + "°C"
+          })
       })
     })
 
@@ -35,24 +37,25 @@ class HeaderC extends Component {
   render() {
     const path = this.props.location.pathname;
     const content = getPageHeaderContent(path);
-    const {conditionText, conditionIcon, temperature, time} = this.state;
+    const {conditionText, conditionIcon, temperature, time, isPhone: shouldHideInfo} = this.state;
 
     return (
       <div className="header">
         <div className="header-left">
           <a>Log off</a>
-          <span>    Welcome Admin</span>
+          <span style={{display: shouldHideInfo ? "none":"inline-block"}}>    Welcome Admin</span>
         </div>
         <div className="header-middle">
           {content}
           <div className="header-middle-triangle">
-            
           </div>
         </div>
-        <div className="header-right weather-info">
+        <div className="header-right">
             {time   }
-            <img src={conditionIcon} alt="condition icon"></img>
-            {conditionText + " " + temperature}
+            <span className="weather-info" style={{display: shouldHideInfo ? "none":"inline-block"}}>
+              <img src={conditionIcon} alt="condition icon"></img>
+              {conditionText + " " + temperature}
+            </span>           
         </div>
       </div>
     );
