@@ -1,53 +1,61 @@
 import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import menu from './menuConfig';
 import { Menu } from 'antd';
-import {
-  InsertRowAboveOutlined,
-  BarChartOutlined,
-  HomeOutlined,
-  UserOutlined,
-  SafetyOutlined,
-
-} from '@ant-design/icons';
 import './LeftNav.less'
+import GetOpenKey from './GetOpenKeyForSubMenu'
 
 const { SubMenu } = Menu;
 
-export default class LeftNav extends Component {
-
+class LeftNav extends Component {
   render() {
-    return (
+    const path= this.props.location.pathname;
+    const openKey = GetOpenKey(path);
 
+    return (
       <div className="left-nav">
         <header className="left-nav-header">
-          <h2>LTL</h2>
+          <h2 >LTL</h2>
         </header>
            <Menu
             className="left-nav-menu"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={[path]}
+            defaultOpenKeys={[openKey]}
             mode="inline"
             style={{backgroundColor:"lightgray"}}
           >
-            <Menu.Item key="1" icon={<HomeOutlined />}>
-              Home
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<InsertRowAboveOutlined />} title="Product">
-              <Menu.Item key="2">Category</Menu.Item>
-              <Menu.Item key="3">Product</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="4" icon={<UserOutlined />}>
-              User
-            </Menu.Item>
-            <Menu.Item key="5" icon={<SafetyOutlined />}>
-              Role
-            </Menu.Item>
-            <SubMenu key="sub2" icon={<BarChartOutlined/>} title="Chart">
-            <Menu.Item key="6">Bar Chart</Menu.Item>
-            <Menu.Item key="7">Pie Chart</Menu.Item>
-            <Menu.Item key="8">Line Chart</Menu.Item>
-          </SubMenu>
+            {
+              menu.map(item => {
+                if(!item.children){
+                  return (
+                   <Menu.Item key={item.key} icon={item.icon}>
+                    <Link to={item.key}>
+                      {item.content}
+                    </Link>
+                  </Menu.Item>)
+                } else {
+                  return (
+                    <SubMenu key={item.key} icon={item.icon} title={item.content}>
+                    {
+                      item.children.map(itemC => {
+                        return (
+                        <Menu.Item key={itemC.key}>
+                          <Link to={itemC.key}>
+                            {itemC.content}
+                          </Link>
+                        </Menu.Item>)
+                      })
+                    }
+                    </SubMenu>)
+                }          
+              })
+            }
         </Menu>
       </div>
     );
   }
-}
+};
+
+//higher-order component
+//pass in history, location, match.
+export default withRouter(LeftNav);

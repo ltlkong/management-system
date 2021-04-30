@@ -44,7 +44,6 @@ export default class Login extends Component {
       return <Redirect to="/"/>
     }
 
-
     return (
       <div className="login">
         <header className="login-header">
