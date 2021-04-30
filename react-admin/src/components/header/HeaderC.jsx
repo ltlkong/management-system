@@ -45,7 +45,12 @@ class HeaderC extends Component {
           <a>Log off</a>
           <span>    Welcome Admin</span>
         </div>
-        <div className="header-middle">{content}</div>
+        <div className="header-middle">
+          {content}
+          <div className="header-middle-triangle">
+            
+          </div>
+        </div>
         <div className="header-right weather-info">
             {time   }
             <img src={conditionIcon} alt="condition icon"></img>
