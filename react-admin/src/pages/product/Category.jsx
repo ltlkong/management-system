@@ -10,7 +10,6 @@ export default class Category extends Component {
 
   render() {
     return (
-      
       <div className="category">
         <div className="button-wrapper">
           <div></div>

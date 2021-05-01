@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Login.less'
 import { message, Form, Input, Button } from 'antd';
 import { Redirect } from 'react-router';
-import test from '../../test/testData'
+import PostLoginInfo from '../../api/PostLoginInfo';
 
 //login page
 export default class Login extends Component {
@@ -12,7 +12,7 @@ export default class Login extends Component {
     password : "",
   }
 
-  handleChange = (event) => {
+  handleInputChange = (event) => {
     const name = event.target.name
 
     this.setState({
@@ -23,12 +23,15 @@ export default class Login extends Component {
   //login vertification
   handleLogin = () => {
     const { userName, password } = this.state;
-    
-    if(userName === test.userName && password === test.password) {
-      this.setState({loginState : true});
-    } else if(userName !== "" && password !== "") {
-      message.info('Incorrect username or password');
-    }
+
+    PostLoginInfo(userName, password)
+    .then(userInfo => {
+      if(userInfo){ 
+        this.setState({loginState : true});
+      }else if(userName !== "" && password !== "") {
+          message.info('Incorrect username or password');
+      }
+    });
   }
 
   render() { 
@@ -64,7 +67,7 @@ export default class Login extends Component {
             >
               <Input
                 name="userName"
-                onChange={ this.handleChange}
+                onChange={ this.handleInputChange}
                 value={this.state.userName}
               />
             </Form.Item>
@@ -81,7 +84,7 @@ export default class Login extends Component {
             >
               <Input.Password 
                 name="password"
-                onChange={ this.handleChange}
+                onChange={ this.handleInputChange}
                 value={this.state.password}
               />
             </Form.Item>

@@ -36,7 +36,7 @@ export default class Admin extends Component {
        <>
         <Layout style={{height:"100%"}}>
           <Sider
-            collapsible collapsed={this.state.collapsed}
+            collapsible={true} collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
           >
             <LeftNav/>

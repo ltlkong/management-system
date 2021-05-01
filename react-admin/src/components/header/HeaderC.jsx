@@ -30,6 +30,10 @@ class HeaderC extends Component {
           })
       })
     })
+    .then(() =>{
+       setInterval(() => this.setState({time: formateTime(Date.now())}), 1000);
+    }  
+    );   
   }
 
   render() {
