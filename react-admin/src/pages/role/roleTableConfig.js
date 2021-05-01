@@ -5,6 +5,7 @@ export const columns = [
     title: 'Role',
     dataIndex: 'role',
     key: 'role',
+    ellipsis:true
   },
   {
     title: 'Action',

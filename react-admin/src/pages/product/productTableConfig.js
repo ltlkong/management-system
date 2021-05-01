@@ -5,11 +5,13 @@ export const columns = [
     title: 'Product',
     dataIndex: 'name',
     key: 'name',
+    ellipsis:true
   },
   {
     title: 'Description',
     dataIndex: 'description',
     key: 'description',
+    ellipsis:true
   },
   {
     title: 'Price',

@@ -5,7 +5,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="home">Welcome to Ltl management system</div>
+      <div className="home">Welcome to LTL management system</div>
     );
   }
 }

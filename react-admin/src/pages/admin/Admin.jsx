@@ -10,10 +10,10 @@ import Product from '../product/Product';
 import User from '../user/User';
 import Role from '../role/Role';
 import BarChart from '../charts/BarChart';
-import PieChart from '../charts/BarChart';
-import LineChart from '../charts/BarChart';
+import PieChart from '../charts/PieChart';
+import LineChart from '../charts/LineChart';
 import './Admin.css'
-const { Header, Footer, Sider, Content } = Layout;
+const { Footer, Sider, Content } = Layout;
 
 //admin page
 export default class Admin extends Component {

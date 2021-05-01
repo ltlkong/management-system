@@ -2,24 +2,28 @@ import { Space } from 'antd';
 
 export const columns = [
   {
+    title: 'Account Number',
+    dataIndex: 'account',
+    key: 'account',
+    ellipsis:true
+  },
+  {
     title: 'First Name',
     dataIndex: 'firstName',
     key: 'firstName',
+    ellipsis:true
   },
   {
     title: 'Last Name',
     dataIndex: 'lastName',
     key: 'lastName',
-  },
-  {
-    title: 'Account Number',
-    dataIndex: 'account',
-    key: 'account',
+    ellipsis:true
   },
   {
     title: 'Role',
     dataIndex: 'role',
     key: 'role',
+    ellipsis:true
   },
   {
     title: 'Action',

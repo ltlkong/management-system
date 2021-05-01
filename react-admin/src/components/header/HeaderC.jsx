@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 import './HeaderC.less'
 import getPageHeaderContent from './GetPageHeaderContent'
 import getLatAndLong from '../../api/GetLatAndLong'
 import getWeatherInformation from '../../api/GetWeatherInfo'
 import formateTime from '../../utils/FormatTime'
+import { Popconfirm } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
 class HeaderC extends Component {
   state = {
@@ -28,10 +30,6 @@ class HeaderC extends Component {
           })
       })
     })
-
-  setInterval(() => {
-      this.setState({time: formateTime(Date.now())})
-    })
   }
 
   render() {
@@ -42,7 +40,15 @@ class HeaderC extends Component {
     return (
       <div className="header">
         <div className="header-left">
-          <Link to="/login">Log off</Link>
+
+          <Popconfirm
+            title="Are you sure？"
+            icon={<QuestionCircleOutlined style={{ color: 'gray' }} />}
+            onConfirm={() => {window.location.href="/login"}}
+          >
+            <Link to="/login">Log off</Link>
+          </Popconfirm>,
+          
           <span style={{display: shouldHideInfo ? "none":"inline-block"}}>    Welcome Admin</span>
         </div>
         <div className="header-middle">
