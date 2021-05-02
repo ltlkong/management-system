@@ -104,18 +104,6 @@ namespace ManagementSystemApi.Controllers
             return user;
         }
 
-        //check user login information {UserName:"",Password:""}
-        [HttpPost("{checklogin}")]
-        public ActionResult<User> CheckLoginInfo(User loginInfo)
-        {
-            var user = _context.Users.FirstOrDefault(user =>
-                user.UserName == loginInfo.UserName
-                && user.Password == loginInfo.Password
-            );
-
-            return user;
-        }
-
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);

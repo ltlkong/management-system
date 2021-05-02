@@ -17,7 +17,7 @@ namespace ManagementSystemApi.Models
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public bool LoginStatus { get; set; }
+        public int LoginStatus { get; set; }
         public virtual ICollection<RoleUser> RoleUsers { get; set; }
     }
 }
