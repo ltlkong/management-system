@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import { columns } from './userTableConfig';
 import { Table,Button, Input } from 'antd';
+import getTableData from '../../api/GetTableData';
 
 const { Search } = Input;
 
-const testData = [
-  {
-    account:"abc123456",
-    firstName:"tielin",
-    lastName:"Li", 
-    role:"Admin",
-  },
-]
-
 export default class User extends Component {
+
+  state = {
+    usersData:[]
+  }
+
+  componentDidMount() {
+    getTableData("users")
+    .then(res => {
+      this.setState({usersData: res})
+      }
+    )
+  }
+
   render() {
     return (
       <div className="user">
@@ -24,7 +29,7 @@ export default class User extends Component {
         </div>
         <Table
           columns={columns}
-          dataSource={testData}
+          dataSource={this.state.usersData}
           className="user-table"
           bordered={true}
         />

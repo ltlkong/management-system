@@ -2,68 +2,22 @@ import React, { Component } from 'react'
 import { Table,Button, Input } from 'antd';
 import { columns } from './productTableConfig';
 import '../../shareStyle/tableStyle.less';
+import getTableData from '../../api/GetTableData';
 
 const { Search } = Input;
 
-const testData = [
-    {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air",
-  },
-      {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air"
-  },    {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air"
-  },
-      {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air"
-  },
-      {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air"
-  },
-      {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air"
-  },
-  {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air"
-  },
-      {
-      id:1,
-      name:"macbook air",
-      price:"1200",
-      inStock:3,
-      description:"apple m1 macbook air"
-  }
-]
-
 export default class Product extends Component {
+    state = {
+      productsData:[]
+    }
+
+    componentDidMount() {
+      getTableData("products")
+      .then(res => {
+        this.setState({productsData: res})
+        }
+      )
+    }
 
   render() {
     return (
@@ -75,7 +29,7 @@ export default class Product extends Component {
         </div>
         <Table
           columns={columns}
-          dataSource={testData}
+          dataSource={this.state.productsData}
           className="product-table"
           bordered={true}
         />

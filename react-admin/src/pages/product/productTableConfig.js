@@ -20,8 +20,8 @@ export const columns = [
   },
   {
     title: 'Stock',
-    dataIndex: 'inStock',
-    key: 'inStock',
+    dataIndex: 'stock',
+    key: 'stock',
   },
   {
     title: 'Action',

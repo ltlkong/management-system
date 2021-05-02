@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { columns } from './roleTableConfig';
 import { Table,Button, Input } from 'antd';
+import getTableData from '../../api/GetTableData'
 
 const { Search } = Input;
 
-const testData = [
-  {
-    role: "admin"
-  }
-]
-
 export default class Role extends Component {
+  state = {
+    rolesData:[]
+  }
+
+  componentDidMount() {
+    getTableData("roles")
+    .then(res => {
+      console.log(res);
+      this.setState({rolesData: res})
+      }
+    )
+  }
 
   render() {
     return (
@@ -22,7 +29,7 @@ export default class Role extends Component {
         </div>
         <Table
           columns={columns}
-          dataSource={testData}
+          dataSource={this.state.rolesData}
           className="role-table"
           bordered={true}
         />

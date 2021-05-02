@@ -15,9 +15,18 @@ export const columns = [
   },
   {
     title: 'Role',
-    dataIndex: 'role',
+    dataIndex: 'roleUsers',
     key: 'role',
-    ellipsis:true
+    ellipsis:true,
+    render: (roleUsers) => (
+      <Space size="large">
+        {   
+          roleUsers.map(ru => {
+            return <span>{ru.role.roleName}</span>
+          })
+        }
+      </Space>
+    ),
   },
   {
     title: 'Action',

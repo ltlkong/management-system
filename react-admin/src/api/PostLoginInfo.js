@@ -1,9 +1,8 @@
 export default function PostLoginInfo(userName, password) {
   const loginInfo = {
-    UserName:userName,
-    Password:password
+    userName:userName,
+    password:password
   }
-
   const options = {
     method:"POST",
     body: JSON.stringify(loginInfo),
@@ -12,8 +11,7 @@ export default function PostLoginInfo(userName, password) {
     }
   }
 
-  return fetch("https://localhost:5001/api/users/checkloginInfo",options)
+  return fetch("https://localhost:5001/api/login",options)
   .then(res => res.json())
   .catch(err => console.log(err))
-
 }

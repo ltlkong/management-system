@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
 import { Table, Button, Input } from 'antd';
 import '../../shareStyle/tableStyle.less'
-import testData from '../../test/testData';
-import { columns } from './categoryTableConfig'
+import { columns } from './categoryTableConfig';
+import getTableData from '../../api/GetTableData';
+import createTableData from '../../api/CreateTableElement';
 
 const { Search } = Input;
 
 export default class Category extends Component {
+  state = {
+    categoriesData:[]
+  }
+
+  componentDidMount() {
+    getTableData("categories")
+    .then(res => {
+      this.setState({categoriesData: res})
+      }
+    )
+  }
 
   render() {
     return (
@@ -18,7 +30,7 @@ export default class Category extends Component {
         </div>
         <Table
           columns={columns}
-          dataSource={testData.category}
+          dataSource={this.state.categoriesData}
           className="category-table"
           bordered={true}
         />

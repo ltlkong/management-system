@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Layout } from 'antd';
 import LeftNav from '../../components/left-nav/LeftNav';
 import HeaderC from '../../components/header/HeaderC';
-import { Redirect } from 'react-router';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../home/Home';
 import Category from '../product/Category';
 import Product from '../product/Product';
@@ -12,7 +11,10 @@ import Role from '../role/Role';
 import BarChart from '../charts/BarChart';
 import PieChart from '../charts/PieChart';
 import LineChart from '../charts/LineChart';
-import './Admin.css'
+import './Admin.css';
+import Cookie from 'js-cookie';
+
+
 const { Footer, Sider, Content } = Layout;
 
 //admin page
@@ -27,10 +29,9 @@ export default class Admin extends Component {
 
   render() {
     //login status is false
-    // if(true){
-    //   console.log(1);
-    //   return <Redirect to="/login"/>
-    // }
+    if(!Cookie.getJSON("user")){
+      return <Redirect to="/login"/>
+    }
 
     return (
        <>

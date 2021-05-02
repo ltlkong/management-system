@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import './Login.less'
 import { message, Form, Input, Button } from 'antd';
-import { Redirect } from 'react-router';
-import PostLoginInfo from '../../api/PostLoginInfo';
+import postLoginInfo from '../../api/PostLoginInfo';
+import Cookie from 'js-cookie';
+
 
 //login page
 export default class Login extends Component {
   state = {
-    loginState : false,
     userName : "",
     password : "",
   }
@@ -24,21 +24,22 @@ export default class Login extends Component {
   handleLogin = () => {
     const { userName, password } = this.state;
 
-    PostLoginInfo(userName, password)
-    .then(userInfo => {
-      if(userInfo){ 
-        this.setState({loginState : true});
-      }else if(userName !== "" && password !== "") {
-          message.info('Incorrect username or password');
-      }
-    });
+    if(userName !== "" && password !== "")
+    {
+      postLoginInfo(userName, password)
+      .then(loginInfo => {
+        if(loginInfo.status === 1){
+          message.info(loginInfo.msg);
+        } else {
+          Cookie.set("user",JSON.stringify(loginInfo.user), { expires: 7 });
+          this.props.history.replace('/');
+        }
+      });
+    }
+    
   }
 
   render() { 
-    if(this.state.loginState) {
-      return <Redirect to="/"/>
-    }
-
     return (
       <div className="login">
         <header className="login-header">

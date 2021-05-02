@@ -2,6 +2,7 @@ import menu from '../left-nav/menuConfig';
 
 export default function getPageHeaderContent(path) {
   let content;
+
   menu.forEach(item => {
     if(!item.children) {
       if(item.key === path)
@@ -14,5 +15,5 @@ export default function getPageHeaderContent(path) {
     }
   })
 
-  return content;
+  return content || "Home";
 }

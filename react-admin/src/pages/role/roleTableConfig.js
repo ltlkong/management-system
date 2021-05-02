@@ -3,7 +3,7 @@ import { Space } from 'antd';
 export const columns = [
   {
     title: 'Role',
-    dataIndex: 'role',
+    dataIndex: 'roleName',
     key: 'role',
     ellipsis:true
   },

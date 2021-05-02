@@ -5,8 +5,9 @@ import getPageHeaderContent from './GetPageHeaderContent'
 import getLatAndLong from '../../api/GetLatAndLong'
 import getWeatherInformation from '../../api/GetWeatherInfo'
 import formateTime from '../../utils/FormatTime'
-import { Popconfirm } from 'antd';
+import { Popconfirm } from 'antd'
 import { QuestionCircleOutlined } from '@ant-design/icons';
+import Cookie from 'js-cookie';
 
 class HeaderC extends Component {
   state = {
@@ -16,6 +17,12 @@ class HeaderC extends Component {
     time: formateTime(Date.now()),
     isPhone: window.innerWidth < 500 ? true : false,
   }
+
+  handleLogOff = () => {
+    this.props.history.replace("/login");
+    Cookie.remove("user");
+  }
+
 
   componentDidMount() {
     getLatAndLong()
@@ -48,12 +55,14 @@ class HeaderC extends Component {
           <Popconfirm
             title="Are you sure？"
             icon={<QuestionCircleOutlined style={{ color: 'gray' }} />}
-            onConfirm={() => {window.location.href="/login"}}
+            onConfirm={this.handleLogOff}
           >
             <Link to="/login">Log off</Link>
-          </Popconfirm>,
+          </Popconfirm>
           
-          <span style={{display: shouldHideInfo ? "none":"inline-block"}}>    Welcome Admin</span>
+          <span style={{display: shouldHideInfo ? "none":"inline-block", marginLeft:"15px"}}>
+            Welcome {Cookie.getJSON("user").userName}
+          </span>
         </div>
         <div className="header-middle">
           {content}
