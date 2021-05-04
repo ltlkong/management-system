@@ -32,6 +32,7 @@ export default class User extends Component {
           dataSource={this.state.usersData}
           className="user-table"
           bordered={true}
+          rowKey={(record) => record.id}
         />
       </div>
     );

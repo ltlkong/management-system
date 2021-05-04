@@ -32,6 +32,7 @@ export default class Role extends Component {
           dataSource={this.state.rolesData}
           className="role-table"
           bordered={true}
+          rowKey={(record) => record.id}
         />
       </div>
     );
