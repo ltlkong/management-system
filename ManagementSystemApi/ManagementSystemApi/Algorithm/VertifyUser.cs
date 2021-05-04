@@ -8,14 +8,14 @@ namespace ManagementSystemApi.Algorithm
 {
     public static class VertifyUser
     {
-        public static LoginStatus IsAdmin(User loginInfo, ManagementSystemDbContext context)
+        public static LoginStatusResponse IsAdmin(User loginInfo, ManagementSystemDbContext context)
         {
             var user = context.Users.FirstOrDefault(user =>
                 user.UserName == loginInfo.UserName
                 && user.Password == loginInfo.Password
             );
 
-            LoginStatus loginStatus = new LoginStatus();
+            LoginStatusResponse loginStatus = new LoginStatusResponse();
 
             //vertify is user admin
             if (user == null)

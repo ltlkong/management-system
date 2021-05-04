@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ManagementSystemApi.Models;
 using Microsoft.AspNetCore.Cors;
 using ManagementSystemApi.Algorithm;
+using System.Text.RegularExpressions;
 
 namespace ManagementSystemApi.Controllers
 {
@@ -26,11 +27,26 @@ namespace ManagementSystemApi.Controllers
         [HttpPost]
         public ActionResult<IEnumerable<Product>> GetProducts(User user)
         {
-            LoginStatus loginStatus = VertifyUser.IsAdmin(user, _context);
+            LoginStatusResponse loginStatus = VertifyUser.IsAdmin(user, _context);
 
             if (loginStatus.Status == 0)
             {
                 return _context.Products;
+            }
+
+            return null;
+        }
+
+        [HttpPost("{filter}")]
+        public ActionResult<ICollection<Product>> GetProductsByName(RequestModel<string> requestInfo)
+        {
+            LoginStatusResponse loginStatus = VertifyUser.IsAdmin(requestInfo.User, _context);
+
+            var products = _context.Products.Where(pr => pr.Name.ToLower().Contains(requestInfo.Content.ToLower())).ToList();
+
+            if (loginStatus.Status == 0 && products.Count > 0)
+            {
+                return products;
             }
 
             return null;

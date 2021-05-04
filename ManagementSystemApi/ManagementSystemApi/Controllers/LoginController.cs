@@ -26,9 +26,9 @@ namespace ManagementSystemApi.Controllers
 
         //check user login information {UserName:"",Password:""}
         [HttpPost]
-        public ActionResult<LoginStatus> CheckLoginInfo(User loginInfo)
+        public ActionResult<LoginStatusResponse> CheckLoginInfo(User loginInfo)
         {
-            LoginStatus loginStatus = VertifyUser.IsAdmin(loginInfo, _context);
+            LoginStatusResponse loginStatus = VertifyUser.IsAdmin(loginInfo, _context);
 
             return loginStatus;
         }

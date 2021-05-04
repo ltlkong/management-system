@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace ManagementSystemApi.Models
 {
-    public class LoginStatus
+    public class RequestModel<type>
     {
-        public int Status { get; set; }
-        public string Msg { get; set; }
+        public type Content { get; set; }
         public User User { get; set; }
+
     }
 }

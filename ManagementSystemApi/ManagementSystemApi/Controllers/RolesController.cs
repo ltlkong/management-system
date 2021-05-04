@@ -26,7 +26,7 @@ namespace ManagementSystemApi.Controllers
         [HttpPost]
         public ActionResult<IEnumerable<Role>> GetUsers(User user)
         {
-            LoginStatus loginStatus = VertifyUser.IsAdmin(user, _context);
+            LoginStatusResponse loginStatus = VertifyUser.IsAdmin(user, _context);
 
             if (loginStatus.Status == 0)
             {

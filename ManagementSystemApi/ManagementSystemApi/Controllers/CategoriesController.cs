@@ -26,11 +26,26 @@ namespace ManagementSystemApi.Controllers
         [HttpPost]
         public ActionResult<IEnumerable<Category>> GetCategories(User user)
         {
-            LoginStatus loginStatus = VertifyUser.IsAdmin(user, _context);
+            LoginStatusResponse loginStatus = VertifyUser.IsAdmin(user, _context);
 
             if(loginStatus.Status == 0)
             {
                 return _context.Categories;
+            }
+
+            return null;
+        }
+
+        [HttpPost("{filter}")]
+        public ActionResult<ICollection<Category>> GetProductsByName(RequestModel<string> requestInfo)
+        {
+            LoginStatusResponse loginStatus = VertifyUser.IsAdmin(requestInfo.User, _context);
+
+            var categories = _context.Categories.Where(pr => pr.Name.ToLower().Contains(requestInfo.Content.ToLower())).ToList();
+
+            if (loginStatus.Status == 0 && categories.Count > 0)
+            {
+                return categories;
             }
 
             return null;
@@ -71,19 +86,19 @@ namespace ManagementSystemApi.Controllers
         // POST: api/Categories
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost("{create}")]
-        public async Task<ActionResult<IEnumerable<Category>>> PostCategory(Category category)
-        {
-            var categoryInDb = _context.Categories.FirstOrDefault(c => c.Name == category.Name);
+        //[HttpPost("{create}")]
+        //public async Task<ActionResult<IEnumerable<Category>>> PostCategory(Category category)
+        //{
+        //    var categoryInDb = _context.Categories.FirstOrDefault(c => c.Name == category.Name);
 
-            if (categoryInDb == null)
-            {
-                _context.Categories.Add(category);
-                await _context.SaveChangesAsync();
-            }
+        //    if (categoryInDb == null)
+        //    {
+        //        _context.Categories.Add(category);
+        //        await _context.SaveChangesAsync();
+        //    }
 
-            return await _context.Categories.ToListAsync();
-        }
+        //    return await _context.Categories.ToListAsync();
+        //}
 
         //// DELETE: api/Categories/5
         //[HttpDelete("{id}")]
