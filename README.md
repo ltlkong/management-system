@@ -12,7 +12,7 @@ Used technologies
 - run dotnet run in managementapi
 
 ## App pictures
-![Pic1](.\AppPictures\2021-06-20.png)
-![Pic2](.\AppPictures\2021-06-20(2).png)
+![Login](https://i.postimg.cc/fRb0CKV0/2021-06-20.png)
+![App](https://i.postimg.cc/CK3BFpmj/2021-06-20-2.png)
 
 
