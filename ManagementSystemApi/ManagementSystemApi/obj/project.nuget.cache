@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "E/ji7mY/1Xmx8ip1afWG4Bj7L+s1vHdq2K+drzyT2WwM/vFGzEsTTzrA0kNji/TO6a5X3roFnZXl9EtQLS48Hw==",
+  "dgSpecHash": "lF0pkR5vUyiRqKPfThlkqerehMs9ioRRRW6f/KBNEwKJgvcU3BqY2ZIE+QaOZI9y3yEGn19CqymO57h1SHywRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\22984\\Desktop\\Management system\\ManagementSystemApi\\ManagementSystemApi\\ManagementSystemApi.csproj",
+  "projectFilePath": "C:\\Users\\22984\\Desktop\\management-system\\ManagementSystemApi\\ManagementSystemApi\\ManagementSystemApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\22984\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\22984\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

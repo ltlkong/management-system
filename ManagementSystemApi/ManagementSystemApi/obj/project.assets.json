@@ -9156,11 +9156,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\22984\\Desktop\\Management system\\ManagementSystemApi\\ManagementSystemApi\\ManagementSystemApi.csproj",
+      "projectUniqueName": "C:\\Users\\22984\\Desktop\\management-system\\ManagementSystemApi\\ManagementSystemApi\\ManagementSystemApi.csproj",
       "projectName": "ManagementSystemApi",
-      "projectPath": "C:\\Users\\22984\\Desktop\\Management system\\ManagementSystemApi\\ManagementSystemApi\\ManagementSystemApi.csproj",
+      "projectPath": "C:\\Users\\22984\\Desktop\\management-system\\ManagementSystemApi\\ManagementSystemApi\\ManagementSystemApi.csproj",
       "packagesPath": "C:\\Users\\22984\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\22984\\Desktop\\Management system\\ManagementSystemApi\\ManagementSystemApi\\obj\\",
+      "outputPath": "C:\\Users\\22984\\Desktop\\management-system\\ManagementSystemApi\\ManagementSystemApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\22984\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9238,7 +9238,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
